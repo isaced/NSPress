@@ -38,3 +38,5 @@ Packages/
 .build/
 
 Config/secrets
+
+*.xcodeproj
