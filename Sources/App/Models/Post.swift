@@ -1,30 +1,42 @@
 import Vapor
 import Fluent
 
+
 final class Post: Model {
     var id: Node?
-    var name: String
+    var title: String
+    var text: String
+    var status: Int
     
-    init(name: String) {
-        self.name = name
+    
+    init(title: String, text: String, status: Int = 1) {
+        self.title = title
+        self.text = text
+        self.status = status
     }
     
     init(node: Node, in context: Context) throws {
         id = try node.extract("id")
-        name = try node.extract("name")
+        title = try node.extract("title")
+        text = try node.extract("text")
+        status = try node.extract("status")
     }
     
     func makeNode(context: Context) throws -> Node {
         return try Node(node: [
             "id": id,
-            "name": name
+            "title": title,
+            "text": text,
+            "status": status
             ])
     }
     
     static func prepare(_ database: Database) throws {
         try database.create("posts") { users in
             users.id()
-            users.string("name")
+            users.string("title")
+            users.string("text")
+            users.int("status")
         }
     }
     
