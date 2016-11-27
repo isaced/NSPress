@@ -7,7 +7,7 @@ final class Post: Model {
     var title: String
     var text: String
     var status: Int
-    
+    var exists: Bool = false
     
     init(title: String, text: String, status: Int = 1) {
         self.title = title
@@ -35,7 +35,7 @@ final class Post: Model {
         try database.create("posts") { users in
             users.id()
             users.string("title")
-            users.string("text")
+            users.string("text", length: 10000)
             users.int("status")
         }
     }

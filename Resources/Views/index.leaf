@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <h1>NSPress</h1>
+    <hr />
+    #loop(posts, "post") {
+        <h3>#(post.title)</h3>
+        <p>#(post.text)</p>
+    }
+</html

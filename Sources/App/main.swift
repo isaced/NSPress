@@ -6,18 +6,17 @@ drop.preparations.append(User.self)
 drop.preparations.append(Post.self)
 try drop.addProvider(VaporMySQL.Provider.self)
 
+// ---
+
 drop.get { req in
-    return "hello!"
+    var posts: Node?
+    if let db = drop.database?.driver as? MySQLDriver {
+            posts = try Post.all().makeNode()
+    }
+    return try drop.view.make("index.leaf", ["posts":posts ?? []])
 }
 
-drop.get("version") { request in
-    if let db = drop.database?.driver as? MySQLDriver {
-        let version = try db.raw("SELECT version()")
-        return try JSON(node: version)
-    }else{
-        return "No db connection"
-    }
-}
+// ---
 
 drop.get("test") { request in
     var user = User(name: "Jack")
