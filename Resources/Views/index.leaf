@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <h1>NSPress</h1>
-    <hr />
-    #loop(posts, "post") {
-        <h3>#(post.title)</h3>
-        <p>#(post.text)</p>
-    }
-</html
+#extend("base")
+#export("body") {
+    <div class="posts">
+        <h1 class="content-subhead">Recent Posts</h1> 
+        #loop(posts, "post") {
+            <section class="post"> 
+                 <header class="post-header"> 
+                    <h2 class="post-title"> #(post.title) </h2> 
+                </header> 
+                <div class="post-description"> 
+                    <p>#(post.text)</p> 
+                </div> 
+            </section>
+        } ##else() {
+          <p>No more post...</p>
+        }
+    </div> 
+}

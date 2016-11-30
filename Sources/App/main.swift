@@ -30,4 +30,7 @@ drop.get("add-post") { request in
     return try JSON(node: Post.all().makeNode())
 }
 
+// Admin routes
+AdminController().addRoutes(drop)
+
 drop.run()
