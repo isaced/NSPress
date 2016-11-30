@@ -4,17 +4,22 @@
 
 A Swift Blogging Platform. Simple and Powerful.
 
+## Requirements
+
 - [Vapor](https://github.com/vapor/vapor)
 - MySQL
 - Swift 3
 
 Currently in the development of state,plans will have many features, like markdown,theme,plugins...
 
+About database, currently only support mysql for development, follow-up may support more.
+
 ## Preview
 
 ![screenshot](http://ww1.sinaimg.cn/large/006y8mN6gw1faa6uexw9nj31kw1b312e.jpg)
 
-*style based on [Pure](http://purecss.io/)*
+<center>style based on [Pure](http://purecss.io/)</center>
+
 
 ## Start
 
@@ -38,6 +43,10 @@ Ok, open `0.0.0.0:8080` on your browser, you can see everything.
 ## Community
 
 Join the welcoming community in [Slack](https://nspress.slack.com/)
+
+## Contact
+
+Follow and contact me on [Twitter](https://twitter.com/isacedx) or [Sina Weibo](http://weibo.com/2034474825). If you find an issue, just open a ticket. Pull requests are warmly welcome as well.
 
 ## License
 
