@@ -6,7 +6,7 @@ A Swift Blogging Platform. Simple and Powerful.
 
 ## Requirements
 
-- [Vapor](https://github.com/vapor/vapor)
+- [Vapor](https://vapor.codes/)
 - MySQL
 - Swift 3
 
@@ -18,7 +18,7 @@ About database, currently only support mysql for development, follow-up may supp
 
 ![screenshot](http://ww1.sinaimg.cn/large/006y8mN6gw1faa6uexw9nj31kw1b312e.jpg)
 
-<center>style based on [Pure](http://purecss.io/)</center>
+*style based on [Pure](http://purecss.io/)*
 
 
 ## Start
@@ -38,7 +38,7 @@ Database prepared
 Server 'default' starting at 0.0.0.0:8080
 ```
 
-Ok, open `0.0.0.0:8080` on your browser, you can see everything.
+Ok, open `http://0.0.0.0:8080` on your browser, you can see everything.
 
 ## Community
 
