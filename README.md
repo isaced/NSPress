@@ -1,5 +1,5 @@
-# NSPress 
-A Swift Blogging Platform. Simple and Powerful.
+# NSPress
+A Swift Blogging Platform. Simple and Powerful. (*[中文](#中文说明)*)
 
 - [Vapor](https://github.com/vapor/vapor)
 - MySQL
@@ -42,7 +42,7 @@ MIT
 
 ---
 
-# NSPress
+# 中文说明
 基于 Swift 简单而强大的博客程序
 
 - [Vapor](https://github.com/vapor/vapor)
