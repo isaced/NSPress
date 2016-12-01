@@ -18,7 +18,7 @@
     
     <body>
         <div class="login">
-            <form class="pure-form pure-form-stacked">
+            <form class="pure-form pure-form-stacked" action="/admin/login" method="post">
                         <legend id="login-title">NSPress</legend>
                         <fieldset class="pure-group">
                             <input id="email" class="pure-input-1" type="email" placeholder="Email">
