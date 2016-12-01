@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#import("page-title") - NSPress</title>
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="">NSPress</a>
+
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="" class="pure-menu-link">Summary</a></li>
+                <li class="pure-menu-item"><a href="" class="pure-menu-link">New Post</a></li>
+                <li class="pure-menu-item"><a href="" class="pure-menu-link">Posts</a></li>
+                <li class="pure-menu-item"><a href="" class="pure-menu-link">Settings</a></li>
+                <li class="pure-menu-item"><a href="" class="pure-menu-link">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>#import("page-title")</h1>
+            <h2></h2>
+        </div>
+
+        <div class="content">
+            #import("content")
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <script src="js/ui.js"></script> -->
+
+</body>
+</html>

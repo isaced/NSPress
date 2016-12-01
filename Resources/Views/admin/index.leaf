@@ -1,0 +1,6 @@
+#extend("admin/base")
+
+#export("page-title") { Summary }
+#export("content") {
+    index.
+}

@@ -16,7 +16,7 @@ final class AdminController {
     }
 
     func index(_ request: Request) throws -> ResponseRepresentable {
-        return "index..."
+        return try drop.view.make("admin/index.leaf")
     }
     
     func login(_ request: Request) throws -> ResponseRepresentable {
