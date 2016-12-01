@@ -20,7 +20,7 @@ final class AdminController {
     }
     
     func login(_ request: Request) throws -> ResponseRepresentable {
-        return "login..."
+        return try drop.view.make("admin/login.leaf")
     }
 
 }
