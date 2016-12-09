@@ -5,7 +5,7 @@ import Auth
 final class AdminController {
 
     func addRoutes(_ drop: Droplet) {
-        let protect = ProtectMiddleware(error: Abort.custom(status: .forbidden, message: "Not authorized."))
+        let protect = AdminProtectMiddleware()
         
         let router = drop.grouped("admin")
         let routerSecure = router.grouped(protect)
@@ -55,3 +55,15 @@ final class AdminController {
         }
     }
 }
+
+public class AdminProtectMiddleware: Middleware {
+    public func respond(to request: Request, chainingTo next: Responder) throws -> Response {
+        do {
+            _ = try request.auth.user()
+            return try next.respond(to: request)
+        } catch {
+            return Response(redirect: "/admin/login")
+        }
+    }
+}
+
