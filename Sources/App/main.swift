@@ -1,11 +1,11 @@
 import Vapor
-import VaporMySQL
+import VaporSQLite
 import Auth
 
 let drop = Droplet()
 drop.preparations.append(User.self)
 drop.preparations.append(Post.self)
-try drop.addProvider(VaporMySQL.Provider.self)
+try drop.addProvider(VaporSQLite.Provider.self)
 
 // Middleware
 drop.middleware.append(AuthMiddleware(user: User.self))
