@@ -68,7 +68,7 @@ The content `<div>` is where all your content goes.
 .content {
     margin: 0 auto;
     padding: 0 2em;
-    max-width: 800px;
+    /*max-width: 800px;*/
     margin-bottom: 50px;
     line-height: 1.6em;
 }
@@ -98,6 +98,22 @@ The content `<div>` is where all your content goes.
     font-weight: 300;
     color: #888;
 }
+
+/* --- index --- */
+.welcome-board {
+    color: #999;
+    font-size: 1.15em;
+}
+
+.welcome-board em {
+    color: #444;
+    font-size: 2em;
+    font-style: normal;
+    font-family: Georgia,serif;
+}
+/* --- index --- */
+
+
 
 
 

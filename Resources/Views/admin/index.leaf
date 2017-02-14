@@ -2,5 +2,5 @@
 
 #export("page-title") { Summary }
 #export("content") {
-    index.
+    <p class="welcome-board">欢迎来到 NSPress 后台，目前共有 <em>0</em> 篇文章。</p>
 }

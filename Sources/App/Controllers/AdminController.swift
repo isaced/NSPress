@@ -13,6 +13,7 @@ final class AdminController {
         router.get("login", handler: login)
         router.post("login", handler: loginAction)
         routerSecure.get("", handler: index)
+        routerSecure.get("new", handler: index)
         routerSecure.get("logout", handler: logout)
     }
 
