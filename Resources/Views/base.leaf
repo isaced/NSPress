@@ -39,6 +39,7 @@
                     <div class="pure-menu pure-menu-horizontal">
                         <ul>
                             <li class="pure-menu-item"><a href="" class="pure-menu-link">About</a></li>
+                            <li class="pure-menu-item"><a href="/admin" class="pure-menu-link">Admin</a></li>
                             <li class="pure-menu-item"><a href="https://github.com/isaced/NSPress" class="pure-menu-link">GitHub</a></li>
                         </ul>
                     </div>
