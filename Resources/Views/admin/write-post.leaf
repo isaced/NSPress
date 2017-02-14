@@ -1,0 +1,17 @@
+#extend("admin/base")
+
+#export("page-title") { New Post } 
+
+#export("content") {
+<form class="pure-form" action="/admin/write-post" method="post">
+    <fieldset class="pure-g">
+        <input type="text" class="pure-u-1" placeholder="Title">
+    </fieldset>
+
+    <fieldset class="pure-group">
+        <textarea class="pure-input-1"></textarea>
+    </fieldset>
+
+    <button type="submit" class="pure-button pure-button-primary">Submit</button>
+</form>
+}

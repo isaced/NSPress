@@ -13,7 +13,9 @@ final class AdminController {
         router.get("login", handler: login)
         router.post("login", handler: loginAction)
         routerSecure.get("", handler: index)
-        routerSecure.get("new", handler: index)
+        routerSecure.get("write-post", handler: writePost)
+        routerSecure.post("write-post", handler: writePost_)
+        routerSecure.get("posts", handler: posts)
         routerSecure.get("logout", handler: logout)
     }
 
@@ -54,6 +56,21 @@ final class AdminController {
         } catch {
             return Response(redirect: "/admin")
         }
+    }
+
+    func writePost(_ request: Request) throws -> ResponseRepresentable {
+        return try drop.view.make("/admin/write-post.leaf")
+    }
+
+    func writePost_(_ request: Request) throws -> ResponseRepresentable {
+        var post = Post(title: "Test", text:"Test Body...")
+        try post.save()
+        return Response(redirect: "/admin/posts")
+    }
+
+    func posts(_ request: Request) throws -> ResponseRepresentable {
+        let posts = try Post.all().makeNode()
+        return try drop.view.make("admin/posts.leaf", ["posts":posts])
     }
 }
 
