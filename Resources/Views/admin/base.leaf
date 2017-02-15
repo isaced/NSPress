@@ -19,13 +19,13 @@
 
     <div id="menu">
         <div class="pure-menu">
-            <a class="pure-menu-heading" href="">NSPress</a>
+            <a class="pure-menu-heading" href="/admin">NSPress</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="" class="pure-menu-link">Summary</a></li>
+                <li class="pure-menu-item"><a href="/admin" class="pure-menu-link">Summary</a></li>
                 <li class="pure-menu-item"><a href="/admin/write-post" class="pure-menu-link">New Post</a></li>
                 <li class="pure-menu-item"><a href="/admin/posts" class="pure-menu-link">Posts</a></li>
-                <li class="pure-menu-item"><a href="" class="pure-menu-link">Settings</a></li>
+                <li class="pure-menu-item"><a href="/admin/settings" class="pure-menu-link">Settings</a></li>
                 <li class="pure-menu-item"><a href="admin/logout" class="pure-menu-link">Sign out</a></li>
             </ul>
         </div>
