@@ -63,9 +63,14 @@ final class AdminController {
     }
 
     func writePost_(_ request: Request) throws -> ResponseRepresentable {
-        var post = Post(title: "Test", text:"Test Body...")
-        try post.save()
-        return Response(redirect: "/admin/posts")
+        if let title = request.data["title"]?.string, let text = request.data["text"]?.string {
+            var post = Post(title: title, text:text)
+            do {
+                try post.save()
+                return Response(redirect: "/admin/posts")
+            }
+        }
+        return try drop.view.make("/admin/write-post.leaf")
     }
 
     func posts(_ request: Request) throws -> ResponseRepresentable {
