@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>标题</th>
-            <th width="10%">日期</th>
+            <th width="20%">日期</th>
         </tr>
     </thead>
 
@@ -14,7 +14,7 @@
         #loop(posts, "post") {
         <tr>
             <td>#(post.title)</td>
-            <td></td>
+            <td>#(post.date)</td>
         </tr>
         }
     </tbody>
