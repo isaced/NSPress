@@ -20,7 +20,8 @@ final class AdminController {
     }
 
     func index(_ request: Request) throws -> ResponseRepresentable {
-        return try drop.view.make("admin/index.leaf")
+        let postcCount = try Post.all().count
+        return try drop.view.make("admin/index.leaf", ["postCount":postcCount])
     }
     
     func loginView(_ request: Request) throws -> ResponseRepresentable {
