@@ -10,12 +10,12 @@ final class AdminController {
         let router = drop.grouped("admin")
         let routerSecure = router.grouped(protect)
         
-        router.get("login", handler: login)
-        router.post("login", handler: loginAction)
+        router.get("login", handler: loginView)
+        router.post("login", handler: login)
         routerSecure.get("", handler: index)
-        routerSecure.get("write-post", handler: writePost)
-        routerSecure.post("write-post", handler: writePost_)
-        routerSecure.get("posts", handler: posts)
+        routerSecure.get("write-post", handler: writePostView)
+        routerSecure.post("write-post", handler: writePost)
+        routerSecure.get("posts", handler: postsView)
         routerSecure.get("logout", handler: logout)
     }
 
@@ -23,7 +23,7 @@ final class AdminController {
         return try drop.view.make("admin/index.leaf")
     }
     
-    func login(_ request: Request) throws -> ResponseRepresentable {
+    func loginView(_ request: Request) throws -> ResponseRepresentable {
         do {
             _ = try request.auth.user()
             
@@ -34,7 +34,7 @@ final class AdminController {
         }
     }
     
-    func loginAction(_ request: Request) throws -> ResponseRepresentable {
+    func login(_ request: Request) throws -> ResponseRepresentable {
         do {
             _ = try request.auth.user()
             return Response(redirect: "/admin")
@@ -58,11 +58,11 @@ final class AdminController {
         }
     }
 
-    func writePost(_ request: Request) throws -> ResponseRepresentable {
+    func writePostView(_ request: Request) throws -> ResponseRepresentable {
         return try drop.view.make("/admin/write-post.leaf")
     }
 
-    func writePost_(_ request: Request) throws -> ResponseRepresentable {
+    func writePost(_ request: Request) throws -> ResponseRepresentable {
         if let title = request.data["title"]?.string, let text = request.data["text"]?.string {
             var post = Post(title: title, text:text)
             do {
@@ -73,7 +73,7 @@ final class AdminController {
         return try drop.view.make("/admin/write-post.leaf")
     }
 
-    func posts(_ request: Request) throws -> ResponseRepresentable {
+    func postsView(_ request: Request) throws -> ResponseRepresentable {
         let posts = try Post.all().makeNode()
         return try drop.view.make("admin/posts.leaf", ["posts":posts])
     }
