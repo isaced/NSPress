@@ -13,7 +13,7 @@
     <tbody>
         #loop(posts, "post") {
         <tr>
-            <td>#(post.title)</td>
+<td><a href="/admin/edit-post/#(post.id)">#(post.title)</a></td>
             <td>#(post.date)</td>
         </tr>
         }

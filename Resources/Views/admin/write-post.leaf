@@ -1,15 +1,21 @@
 #extend("admin/base")
 
-#export("page-title") { New Post } 
+#export("page-title") {
+    #if(post) {
+        Edit Post
+    } ##else() {
+        New Post
+    }
+}
 
 #export("content") {
 <form class="pure-form" action="/admin/write-post" method="post">
     <fieldset class="pure-g">
-        <input type="text" class="pure-u-1" name="title" placeholder="Title">
+<input type="text" class="pure-u-1" name="title" placeholder="Title" value="#(post.title)">
     </fieldset>
 
     <fieldset class="pure-group">
-        <textarea class="pure-input-1" name="text"></textarea>
+        <textarea class="pure-input-1" name="text">#(post.text)</textarea>
     </fieldset>
 
     <button type="submit" class="pure-button pure-button-primary">Submit</button>
