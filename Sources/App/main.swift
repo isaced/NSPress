@@ -19,5 +19,10 @@ drop.get { req in
 // Admin routes
 AdminController().addRoutes(drop)
 
+// Custom Tags
+if let leaf = drop.view as? LeafRenderer {
+    leaf.stem.register(Truncatechars())
+}
+
 // Run application
 drop.run()
