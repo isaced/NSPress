@@ -43,4 +43,4 @@ Config/secrets
 
 .DS_Store
 
-.sqlite
+*.sqlite

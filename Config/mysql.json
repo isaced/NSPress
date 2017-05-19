@@ -1,8 +1,0 @@
-{
-  "host": "localhost",
-  "user": "root",
-  "password": "root",
-  "database": "NSPress",
-  "port": "3306",
-  "encoding": "utf8"
-}

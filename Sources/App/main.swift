@@ -1,28 +1,38 @@
 import Vapor
-import VaporSQLite
-import Auth
+import AuthProvider
+import LeafProvider
+import FluentProvider
+import AuthProvider
 
-let drop = Droplet()
-drop.preparations.append(User.self)
-drop.preparations.append(Post.self)
-try drop.addProvider(VaporSQLite.Provider.self)
+let config = try Config()
+
+// Provider
+try config.addProvider(AuthProvider.Provider.self)
+try config.addProvider(LeafProvider.Provider.self)
+try config.addProvider(FluentProvider.Provider.self)
+
+// Preparations
+config.preparations.append(Post.self)
 
 // Middleware
-drop.middleware.append(AuthMiddleware(user: User.self))
+//config.addConfigurable(middleware: PasswordAuthenticationMiddleware(User.self, nil), name: "auth")
+
+let drop = try Droplet(config)
+
 
 // Home routes
 drop.get { req in
-    var posts = try Post.all().makeNode()
-    return try drop.view.make("index.leaf", ["posts":posts])
+    var posts = try Post.all()
+    return try drop.view.make("index.leaf")
 }
 
 // Admin routes
 AdminController().addRoutes(drop)
 
 // Custom Tags
-if let leaf = drop.view as? LeafRenderer {
-    leaf.stem.register(Truncatechars())
-}
+//if let leaf = drop.view as? LeafRenderer {
+//    leaf.stem.register(Truncatechars())
+//}
 
 // Run application
-drop.run()
+try drop.run()

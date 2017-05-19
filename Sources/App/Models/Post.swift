@@ -1,13 +1,14 @@
 import Foundation
 import Vapor
-import Fluent
+import FluentProvider
 
 final class Post: Model {
-    var id: Node?
     var title: String
     var text: String
     var status: Int
-    var date: Date
+    var createAt: Date
+    
+    let storage = Storage()
     
     var exists: Bool = false
     
@@ -19,68 +20,39 @@ final class Post: Model {
         self.title = title
         self.text = text
         self.status = status
-        self.date = Date()
+        self.createAt = Date()
     }
     
-    init(node: Node, in context: Context) throws {
-        id = try node.extract("id")
-        title = try node.extract("title")
-        text = try node.extract("text")
-        status = try node.extract("status")
-        
-        if let unix = node["date"]?.double {
-            // allow unix timestamps (easy to send this format from Paw)
-            date = Date(timeIntervalSince1970: unix)
-        } else if let raw = node["date"]?.string {
-            // if it's a string we assume it's in mysql date format
-            // this could be expanded to support many formats
-            guard let date = dateFormatter.date(from: raw) else {
-                throw Error.dateNotSupported
-            }
-            
-            self.date = date
-        } else {
-            throw Error.dateNotSupported
-        }
+    init(row: Row) throws {
+        title = try row.get("title")
+        text = try row.get("text")
+        status = try row.get("status")
+        createAt = try row.get("createAt")
     }
     
-    func makeNode(context: Context) throws -> Node {
-        return try Node(node: [
-            "id": id,
-            "title": title,
-            "text": text,
-            "status": status,
-            // simply use the mysql date format for JSON responses and
-            // obviously serializing to mysql.
-            "date": dateFormatter.string(from: date)
-            ])
+    func makeRow() throws -> Row {
+        var row = Row()
+        try row.set("id", id)
+        try row.set("title", title)
+        try row.set("text", text)
+        try row.set("status", status)
+        try row.set("date", createAt)
+        return row
     }
-    
+}
+
+extension Post: Preparation {
     static func prepare(_ database: Database) throws {
-        try database.create("posts") { users in
-            users.id()
-            users.string("title")
-            users.string("text", length: 10000)
-            users.int("status")
-            users.double("date")
+        try database.create(self) { Post in
+            //Post.id(for: self)
+            Post.string("title")
+            Post.string("text")
+            Post.int("status")
+            Post.date("createAt")
         }
     }
     
     static func revert(_ database: Database) throws {
-        try database.delete("posts")
+        try database.delete(self)
     }
-}
-
-// MARK: Re-usable Date Formatter
-
-private var _df: DateFormatter?
-private var dateFormatter: DateFormatter {
-    if let df = _df {
-        return df
-    }
-    
-    let df = DateFormatter()
-    df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    _df = df
-    return df
 }
