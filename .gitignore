@@ -40,3 +40,7 @@ Packages/
 Config/secrets
 
 *.xcodeproj
+
+.DS_Store
+
+.sqlite
