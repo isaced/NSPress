@@ -2,7 +2,7 @@
 
 📖 English | 📖 [中文](/README-CN.md)
 
-A Swift Blogging Platform. Simple and Powerful. (in development...)
+A Swift Blogging Platform. Simple and Powerful. (No longer maintenance...)
 
 ## Requirements
 
