@@ -2,7 +2,7 @@
 
 📖 [English](https://github.com/isaced/NSPress) | 📖 中文
 
-基于 Swift 简单而强大的博客程序 (开发中...)
+基于 Swift 简单而强大的博客程序 (难产了...)
 
 ## 环境
 
